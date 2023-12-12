@@ -4,8 +4,10 @@ use (
 	.
 	./ArchiveFiles
 	./DecryptDirRecursive
+	./DecryptDirRecursivePartially
 	./DeleteFiles
 	./EncryptDirRecursive
+	./EncryptDirRecursivePartially
 	./Experiments
 	./SecureDeleteFiles
 )
