@@ -6,8 +6,9 @@ use (
 	./DecryptDirRecursive
 	./DecryptDirRecursivePartially
 	./DeleteFiles
+	./DownloadingMaliciousFileWithScript
+	./Eic
 	./EncryptDirRecursive
 	./EncryptDirRecursivePartially
-	./Experiments
 	./SecureDeleteFiles
 )
