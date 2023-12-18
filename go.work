@@ -1,7 +1,6 @@
-go 1.21.4
+go 1.21.5
 
 use (
-	.
 	./ArchiveFiles
 	./DecryptDirRecursive
 	./DecryptDirRecursivePartially
@@ -11,4 +10,7 @@ use (
 	./EncryptDirRecursive
 	./EncryptDirRecursivePartially
 	./SecureDeleteFiles
+	./ServiceCreation
+	./StartupFolderNewFile
+	./StartupFolderNewFile/enc
 )

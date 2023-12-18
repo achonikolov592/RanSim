@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	out, err := os.Create("C:/Users/acho/Desktop/diplomna/Experiments/out1.txt")
+	out, err := os.Create("C:/Users/achon/onedrive/Desktop/diplomna/rra/Eic/out1.txt")
 	if err != nil {
 		os.Exit(1)
 		fmt.Println(err)
@@ -28,7 +28,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	_, err = os.Open("C:/Users/acho/Desktop/diplomna/Experiments/out1.txt")
+	_, err = os.Open("C:/Users/achon/onedrive/Desktop/diplomna/rra/Eic/out1.txt")
 	if err != nil {
 		fmt.Println(err)
 	}

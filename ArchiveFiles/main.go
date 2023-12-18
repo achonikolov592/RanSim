@@ -59,7 +59,7 @@ func main() {
         }
 
         archivedFile.Close()
-	os.Remove(file)
+	    os.Remove(file)
     }
     zipWriting.Close()
 }
