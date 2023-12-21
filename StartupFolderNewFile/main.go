@@ -7,6 +7,8 @@ import (
 )
 
 func main() {
+	fmt.Println("Strating : StartupFolderNewFile")
+
 	src, err := os.Open("./enc/encr1.exe")
 	if err != nil {
 		fmt.Println(err)

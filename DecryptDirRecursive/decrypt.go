@@ -50,7 +50,7 @@ func decrypt(dirToDecrypt string, c cipher.AEAD) {
 			}
 
 		} else {
-			decrypt(info.Name(), c)
+			go decrypt(info.Name(), c)
 		}
 	}
 
@@ -76,5 +76,8 @@ func main() {
 		fmt.Println("invalid number of arguments")
 		os.Exit(1)
 	}
+
+	fmt.Println("Strating test: DecryptDir")
+
 	DecryptDir(os.Args[1], os.Args[2])
 }

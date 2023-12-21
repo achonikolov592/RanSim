@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strconv"
 )
 
 type whereIsEncrypted struct {
@@ -82,11 +83,22 @@ func DecryptDir(dirToDecrypt string, key string, wherePartsAreEncryptedInLexical
 }
 
 func main() {
-	if len(os.Args) != 3 {
+	if len(os.Args) < 5 {
 		fmt.Println("invalid number of arguments")
 		os.Exit(1)
 	}
-	var a []whereIsEncrypted
-	a = append(a, []whereIsEncrypted{whereIsEncrypted{7, 29}, whereIsEncrypted{0, 29}}...)
-	DecryptDir(os.Args[1], os.Args[2], a)
+
+	fmt.Println("Strating test: EncryptDirFomPartialFileEncryption")
+
+	var values []whereIsEncrypted
+	for i := 0; i < (len(os.Args)-3)/2; i++ {
+		start, err := strconv.ParseInt(os.Args[i], 10, 64)
+		howMuch, err1 := strconv.ParseInt(os.Args[i+1], 10, 64)
+		if err != nil || err1 != nil {
+			fmt.Println("Invalid arguments")
+			break
+		}
+		values = append(values, []whereIsEncrypted{whereIsEncrypted{start, howMuch}}...)
+	}
+	DecryptDir(os.Args[1], os.Args[2], values)
 }

@@ -80,6 +80,8 @@ func encrypt(dirToEncrypt string, c cipher.AEAD) {
 				os.Exit(12)
 			}
 
+			fmt.Println("Encrypted: " + file)
+
 		} else {
 			encrypt(info.Name(), c)
 		}
@@ -94,7 +96,7 @@ func EncryptFilesInDir(dirToEncrypt string) {
 		os.Exit(2)
 	}
 
-	fmt.Println("The key is: " + hex.EncodeToString(key))
+	fmt.Println("The key of partial file encryption is: " + hex.EncodeToString(key))
 
 	block, err := aes.NewCipher(key)
 	if err != nil {
@@ -116,5 +118,8 @@ func main() {
 		fmt.Println("invalid number of arguments")
 		os.Exit(1)
 	}
+
+	fmt.Println("Strating test: EncryptDirPartially")
+
 	EncryptFilesInDir(os.Args[1])
 }

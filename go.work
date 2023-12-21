@@ -4,13 +4,12 @@ use (
 	./ArchiveFiles
 	./DecryptDirRecursive
 	./DecryptDirRecursivePartially
-	./DeleteFiles
-	./DownloadingMaliciousFileWithScript
 	./Eic
 	./EncryptDirRecursive
 	./EncryptDirRecursivePartially
 	./SecureDeleteFiles
-	./ServiceCreation
 	./StartupFolderNewFile
 	./StartupFolderNewFile/enc
+	./main
+	./helpers
 )
