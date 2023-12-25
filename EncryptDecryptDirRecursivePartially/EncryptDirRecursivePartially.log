@@ -1,0 +1,164 @@
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Decrypted: testfiles/a.txt
+
+Decrypted: testfiles/sub/b.txt
+
+Ending test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Decrypted: testfiles/a.txt
+
+Decrypted: testfiles/sub/b.txt
+
+Ending test: DecryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Start creating test files
+
+Strating test: EncryptDirPartially
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending test: EncryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Ending test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Strating test: DecryptDirRecursivePartially
+
+Decrypted: testfiles/a.txt
+
+Decrypted: testfiles/sub/b.txt
+
+Ending test: DecryptDirRecursivePartially

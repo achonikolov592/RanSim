@@ -1,0 +1,53 @@
+
+
+Strating test: EncryptDecryptDir
+
+Start creating test files
+
+Starting encryption
+
+The key for encryption is 5e67cdf25e8f2fb62f881e94db0d541371ca9e9bc08f937b680f7518d1509318
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending encryption
+
+Endinging test: EncryptDecryptDir
+
+Strating test: EncryptDecryptDir
+
+Start creating test files
+
+Starting encryption
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending encryption
+
+Endinging test: EncryptDecryptDir
+
+Strating test: EncryptDecryptDir
+
+Start creating test files
+
+Starting encryption
+
+Encrypted: testfiles/a.txt
+
+Encrypted: testfiles/sub/b.txt
+
+Ending encryption
+
+Endinging test: EncryptDecryptDir
+
+Strating test: EncryptDecryptDir
+
+Starting encryption
+
+Ending encryption
+
+Endinging test: EncryptDecryptDir

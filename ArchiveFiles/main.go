@@ -1,13 +1,16 @@
 package main
 
 import (
+	"RRA/SecureDeleteFiles/SecureDeleteFile"
 	"archive/zip"
-	"fmt"
+	"helpers"
 	"io"
 	"io/fs"
 	"os"
 	"path/filepath"
 )
+
+var nameOfLogFile string
 
 func zipDir(dir string) {
 	var files []string
@@ -19,23 +22,22 @@ func zipDir(dir string) {
 
 	if errFileWalk != nil {
 		os.Exit(2)
-		fmt.Println("From ArchiveFilesTest: " + errFileWalk.Error())
+		helpers.WriteLog(nameOfLogFile, "Error: "+errFileWalk.Error())
 	}
 
 	archive, err := os.Create("archive.zip")
 	if err != nil {
 		os.Exit(3)
-		fmt.Println("From ArchiveFilesTest: " + err.Error())
+		helpers.WriteLog(nameOfLogFile, "Error: "+err.Error())
 	}
 	defer archive.Close()
 	zipWriting := zip.NewWriter(archive)
 
 	for _, file := range files {
-
 		archivedFile, errOfOpeningFile := os.Open(file)
 		if errOfOpeningFile != nil {
 			os.Exit(4)
-			fmt.Println("From ArchiveFilesTest: " + errOfOpeningFile.Error())
+			helpers.WriteLog(nameOfLogFile, "Error: "+errOfOpeningFile.Error())
 		}
 
 		fileInfo, _ := os.Stat(file)
@@ -44,26 +46,33 @@ func zipDir(dir string) {
 			w1, err := zipWriting.Create(file)
 			if err != nil {
 				os.Exit(5)
-				fmt.Println("From ArchiveFilesTest: " + err.Error())
+				helpers.WriteLog(nameOfLogFile, "Error: "+err.Error())
 			}
 			if _, err := io.Copy(w1, archivedFile); err != nil {
 				os.Exit(6)
-				fmt.Println("From ArchiveFilesTest: " + err.Error())
+				helpers.WriteLog(nameOfLogFile, "Error: "+err.Error())
 			}
-		} else {
-
 		}
 
 		archivedFile.Close()
-		os.Remove(file)
+		SecureDeleteFile.SecureDelete(file, nameOfLogFile)
 	}
+
 	zipWriting.Close()
-}
 
+	os.RemoveAll(dir)
+}
 func main() {
-	if len(os.Args) != 2 {
-		fmt.Println("invalid number of arguments")
-		os.Exit(1)
-	}
+	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "archive")
+	helpers.CreateTestFiles("./", nameOfLogFile)
 
+	helpers.WriteLog(nameOfLogFile, "Starting test: ArchiveFiles")
+	_, err := os.Stat("./archive.zip")
+	if err == nil {
+		os.Remove("./archive.zip")
+	}
+	zipDir("./testfiles")
+	helpers.WriteLog(nameOfLogFile, "Ending test: ArchiveFiles")
 }
+
+//
