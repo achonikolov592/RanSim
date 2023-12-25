@@ -9,11 +9,12 @@ import (
 
 func main() {
 	name := helpers.CreateLogFileIfItDoesNotExist("./", "startup")
-	helpers.WriteLog(name, "Strating: StartupFolderNewFile")
+	helpers.CreateLogFileIfItDoesNotExist("./", "EncryptionInfo")
+	helpers.WriteLog(name, "Strating test : StartupFolderNewFile")
 	helpers.CreateTestFiles("./", name)
 
 	compileFile := exec.Command("go", "build", ".")
-	compileFile.Dir = "./enc"
+	compileFile.Dir = "./encr"
 
 	err := compileFile.Run()
 	if err != nil {
@@ -21,7 +22,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	src, err := os.Open("./enc/encr1.exe")
+	src, err := os.Open("./encr/encr.exe")
 	if err != nil {
 		helpers.WriteLog(name, "Error: "+err.Error())
 		os.Exit(2)
@@ -39,5 +40,7 @@ func main() {
 		os.Exit(4)
 	}
 
-	helpers.WriteLog("./startup.log", "End of test: StartupFolderNewFile")
+	helpers.WriteLog("./startup.log", "Ending test: StartupFolderNewFile")
 }
+
+//
