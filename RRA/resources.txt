@@ -1,0 +1,11 @@
+"C:\Program Files\Windows Defender\MpCmdRun.exe" -Restore -ListAll
+<<<<<<< HEAD
+
+wmic /node:localhost /namespace:\\root\SecurityCenter2 path AntiVirusProduct Get DisplayName | findstr /V /B /C:displayName
+                
+https://stackoverflow.com/questions/31558066/how-to-ask-for-administer-privileges-on-windows-with-go                     
+
+https://www.windowscentral.com/8-networking-command-tools-every-user-should-know-windows-10#section-4-nslookup                                                    
+=======
+wmic /node:localhost /namespace:\\root\SecurityCenter2 path AntiVirusProduct Get DisplayName | findstr /V /B /C:displayName                                                                                         
+>>>>>>> 7fc80a6796b63203067b2e2e7540726a00337350
