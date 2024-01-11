@@ -1,2 +1,0 @@
-"C:\Program Files\Windows Defender\MpCmdRun.exe" -Restore -ListAll
-wmic /node:localhost /namespace:\\root\SecurityCenter2 path AntiVirusProduct Get DisplayName | findstr /V /B /C:displayName                                                                                         
