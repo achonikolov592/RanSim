@@ -1,15 +1,19 @@
 package main
 
 import (
-	"flag"
-
-	"github.com/abdullah2993/go-runpe"
+	"os"
+	"os/exec"
+	"path/filepath"
 )
 
 func main() {
-	var src, dest string
-	flag.StringVar(&src, "src", "C:\\Windows\\System32\\calc.exe", "Source executable")
-	flag.StringVar(&dest, "dest", "C:\\Windows\\System32\\notepad.exe", "Destenation executable")
-	flag.Parse()
-	runpe.Inject(src, dest)
+	proHollExe, _ := filepath.Abs("./go_libpeconv")
+	targetPath := os.Args[1]
+	cmd := exec.Command(proHollExe, "./test.exe", targetPath)
+	err := cmd.Run()
+	if err != nil {
+		os.Exit(1)
+	}
+
+	os.Exit(0)
 }

@@ -1,7 +1,6 @@
 package main
 
 import (
-	"RRA/SecureDeleteFiles/SecureDeleteFile"
 	"helpers"
 	"os"
 	"os/exec"
@@ -10,7 +9,7 @@ import (
 func main() {
 	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "GetSysInfo")
 	helpers.WriteLog(nameOfLogFile, "Starting Test: GetSysInfo", 2)
-	SecureDeleteFile.SecureDelete("./SystemInformation.log", nameOfLogFile)
+	os.Remove("./SystemInformation.log")
 	nameOfContentFile := helpers.CreateLogFileIfItDoesNotExist("./", "SystemInformation")
 	getSystemInfo := exec.Command("systeminfo")
 	getPowershellSystemInfo := exec.Command("powershell.exe", "Get-ComputerInfo")

@@ -1,13 +1,18 @@
 package main
 
 import (
-	"helpers"
-	"os"
-	"strconv"
-	"unsafe"
-
-	"golang.org/x/sys/windows"
+	"fmt"
+	"os/exec"
+	"runtime"
+	"strings"
 )
+
+/*"helpers"
+"os"
+"strconv"
+"unsafe"
+
+"golang.org/x/sys/windows"*/
 
 const (
 	TokenQuery                    = 0x0008
@@ -16,12 +21,24 @@ const (
 	SECURITY_MANDATORY_MEDIUM_RID = 0x00002000
 )
 
-type TOKEN_MANDATORY_LABEL struct {
+/*type TOKEN_MANDATORY_LABEL struct {
 	Label windows.SIDAndAttributes
-}
+}*/
 
 func main() {
-	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "PrivEsc")
+	currOS := runtime.GOOS
+	if currOS == "windows" {
+		cmd := exec.Command("tasklist", "/NH")
+		processes, err := cmd.Output()
+		if err != nil {
+			fmt.Println(err)
+		}
+
+		pids := strings.Fields(string(processes))
+		fmt.Println(pids[:13])
+
+	}
+	/*nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "PrivEsc")
 	helpers.WriteLog(nameOfLogFile, "Ending Test: EscalateToken", 2)
 	kernel := windows.NewLazyDLL("advapi32.dll")
 	setTok := kernel.NewProc("SetTokenInformation")
@@ -104,5 +121,5 @@ func main() {
 	}
 
 	helpers.WriteLog(nameOfLogFile, "Ending Test: EscalateToken", 2)
-	os.Exit(0)
+	os.Exit(0)*/
 }

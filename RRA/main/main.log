@@ -1,0 +1,73 @@
+
+[ERROR]: exec: "ArchiveFiles\\ArchiveFiles\\ArchiveFiles.exe": file does not exist from ArchiveFiles AT 22 Jan 24 14:54 GMT
+[ERROR]: exec: "Eicar\\Eicar\\Eic.exe": file does not exist from Eicar AT 22 Jan 24 14:54 GMT
+[ERROR]: exec: "EncryptDecryptDirRecursivePartially\\EncryptDecryptDirRecursivePartially\\EncryptDecryptDirRecursivePartially.exe": file does not exist from EncryptDecryptDirRecursivePartially AT 22 Jan 24 14:54 GMT
+[ERROR]: exec: "GetSysInfo\\GetSysInfo\\GetSysInfo.exe": file does not exist from GetSystemInformation AT 22 Jan 24 14:54 GMT
+[ERROR]: exec: "RanNote\\RanNote\\RanNote.exe": file does not exist from RansomwareNoteDeploy AT 22 Jan 24 14:54 GMT
+[ERROR]: exec: "ArchiveFiles\\ArchiveFiles\\ArchiveFiles.exe": file does not exist from ArchiveFiles AT 22 Jan 24 15:00 GMT
+[ERROR]: exec: "Eicar\\Eicar\\Eic.exe": file does not exist from Eicar AT 22 Jan 24 15:00 GMT
+[ERROR]: exec: "ArchiveFiles\\ArchiveFiles\\ArchiveFiles.exe": file does not exist from ArchiveFiles AT 22 Jan 24 15:00 GMT
+[ERROR]: exec: "Eicar\\Eicar\\Eic.exe": file does not exist from Eicar AT 22 Jan 24 15:00 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 22 Jan 24 15:02 GMT
+[ERROR]: fork/exec ../Eicar/Eic.exe: Operation did not complete successfully because the file contains a virus or potentially unwanted software. from Eicar AT 22 Jan 24 15:02 GMT
+[ERROR]: fork/exec ../GetSysInfo/GetSysInfo.exe: Operation did not complete successfully because the file contains a virus or potentially unwanted software. from GetSystemInformation AT 22 Jan 24 15:02 GMT
+[ERROR]: exit status 1 at file ..\AllTestFiles AT 22 Jan 24 15:12 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially AT 22 Jan 24 15:16 GMT
+[ERROR]: exit status 1 at file ..\MaliciousPayloadDownload AT 22 Jan 24 15:17 GMT
+[ERROR]: exit status 1 at file ..\ProHoll AT 22 Jan 24 15:18 GMT
+[ERROR]: exit status 1 at file ..\StartupFolderNewFile AT 22 Jan 24 15:19 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 22 Jan 24 15:19 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 22 Jan 24 15:20 GMT
+[ERROR]: exit status 5 from GetSystemInformation AT 22 Jan 24 15:20 GMT
+[ERROR]: fork/exec ../ArchiveFiles/ArchiveFiles.exe: Operation did not complete successfully because the file contains a virus or potentially unwanted software. from ArchiveFiles AT 25 Jan 24 09:02 GMT
+[ERROR]: fork/exec ../Eicar/Eic.exe: Operation did not complete successfully because the file contains a virus or potentially unwanted software. from Eicar AT 25 Jan 24 09:02 GMT
+[ERROR]: exec: "..\\GetSysInfo\\GetSysInfo.exe": file does not exist from GetSystemInformation AT 25 Jan 24 09:02 GMT
+[ERROR]: fork/exec ../RanNote/RanNote.exe: Operation did not complete successfully because the file contains a virus or potentially unwanted software. from RansomwareNoteDeploy AT 25 Jan 24 09:02 GMT
+[ERROR]: exec: "..\\ArchiveFiles\\ArchiveFiles.exe": file does not exist from ArchiveFiles AT 25 Jan 24 12:12 GMT
+[ERROR]: exec: "..\\Eicar\\Eic.exe": file does not exist from Eicar AT 25 Jan 24 12:12 GMT
+[ERROR]: exit status 1 at file ..\ArchiveFiles\testFilesParent AT 25 Jan 24 12:13 GMT
+[ERROR]: exit status 1 at file ..\DLLInjection AT 25 Jan 24 12:13 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursive\testFilesParent AT 25 Jan 24 12:14 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially\testFilesParent AT 25 Jan 24 12:14 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 25 Jan 24 12:14 GMT
+[ERROR]: exit status 1 at file ..\TestFilesAll AT 25 Jan 24 12:14 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 25 Jan 24 12:14 GMT
+[ERROR]: exit status 5 from GetSystemInformation AT 25 Jan 24 12:15 GMT
+[ERROR]: exit status 1 at file ..\ArchiveFiles\testFilesParent AT 25 Jan 24 12:16 GMT
+[ERROR]: exit status 1 at file ..\DLLInjection AT 25 Jan 24 12:16 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursive\testFilesParent AT 25 Jan 24 12:16 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially\testFilesParent AT 25 Jan 24 12:16 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 25 Jan 24 12:17 GMT
+[ERROR]: exit status 1 at file ..\TestFilesAll AT 25 Jan 24 12:17 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 25 Jan 24 12:17 GMT
+[ERROR]: exit status 5 from GetSystemInformation AT 25 Jan 24 12:17 GMT
+[ERROR]: exit status 1 at file ..\ArchiveFiles\testFilesParent AT 25 Jan 24 12:20 GMT
+[ERROR]: exit status 1 at file ..\DLLInjection AT 25 Jan 24 12:20 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursive\testFilesParent AT 25 Jan 24 12:20 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially\testFilesParent AT 25 Jan 24 12:20 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 25 Jan 24 12:21 GMT
+[ERROR]: exit status 1 at file ..\TestFilesAll AT 25 Jan 24 12:21 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 25 Jan 24 12:21 GMT
+[ERROR]: exit status 8 from ArchiveFiles AT 25 Jan 24 12:28 GMT
+[ERROR]: exit status 8 from SecureDeleteFiles AT 25 Jan 24 12:44 GMT
+[ERROR]: fork/exec ../ServiceCreation/ServiceCreation.exe: The requested operation requires elevation. from ServiceCreation AT 25 Jan 24 12:44 GMT
+[ERROR]: fork/exec ../ServiceCreation/ServiceCreation.exe: The requested operation requires elevation. from ServiceCreation AT 25 Jan 24 12:46 GMT
+[ERROR]: fork/exec ../ServiceCreation/ServiceCreation.exe: The requested operation requires elevation. from ServiceCreation AT 25 Jan 24 12:52 GMT
+[ERROR]: exit status 1 from ServiceCreation AT 25 Jan 24 12:55 GMT
+[ERROR]: exit status 1 at file ..\ArchiveFiles\testFilesParent AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\DLLInj AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\DLLInjection AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursive\testFilesParent AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially\testFilesParent AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\SecureDeleteFiles\testFilesParent AT 25 Jan 24 13:47 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 25 Jan 24 13:48 GMT
+[ERROR]: exit status 1 at file ..\TestFilesAll AT 25 Jan 24 13:48 GMT
+[ERROR]: exit status 1 at file ..\ArchiveFiles\testFilesParent AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\DLLInjection AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursive\testFilesParent AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\EncryptDecryptDirRecursivePartially\testFilesParent AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\Exp AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\Exp\githubFreboatGomem AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\SecureDeleteFiles\testFilesParent AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\TestFiles AT 25 Jan 24 14:44 GMT
+[ERROR]: exit status 1 at file ..\TestFilesAll AT 25 Jan 24 14:44 GMT

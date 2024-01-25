@@ -9,8 +9,8 @@ import (
 	"github.com/kardianos/service"
 )
 
-var nameOfLogFile = helpers.CreateLogFileIfItDoesNotExist("C:/Users/achon/onedrive/desktop/diplomna1/rra/ServiceCreation/", "ServiceCreation")
-var nameOfEncryptionInfoFile = helpers.CreateLogFileIfItDoesNotExist("C:/Users/achon/onedrive/desktop/diplomna1/rra/ServiceCreation/", "EncryptionInfo")
+var nameOfLogFile = helpers.CreateLogFileIfItDoesNotExist("./", "ServiceCreation")
+var nameOfEncryptionInfoFile = helpers.CreateLogFileIfItDoesNotExist("./", "EncryptionInfo")
 
 type program struct{}
 
@@ -22,8 +22,8 @@ func (p *program) Start(s service.Service) error {
 func (p *program) run() {
 	for {
 		helpers.WriteLog(nameOfLogFile, "Starting Encryption", 2)
-		helpers.CreateTestFiles("C:/Users/achon/onedrive/desktop/diplomna1/rra/ServiceCreation/", nameOfLogFile)
-		encrypt.EncryptDir("C:/Users/achon/onedrive/desktop/diplomna1/rra/ServiceCreation/testfiles/", nameOfLogFile, nameOfEncryptionInfoFile)
+		helpers.CreateTestFiles("./", nameOfLogFile)
+		encrypt.EncryptDir("./testfiles/", nameOfLogFile, nameOfEncryptionInfoFile)
 		helpers.WriteLog(nameOfLogFile, "Ending Encryption", 2)
 		time.Sleep(10 * time.Second)
 	}
@@ -56,26 +56,27 @@ func main() {
 	}
 
 	if os.Args[1] == "install" {
-		helpers.WriteLog(nameOfLogFile, "Installing service", 2)
+		helpers.WriteLog(nameOfLogFile, "Installing and Running service", 2)
 		err := s.Install()
 		if err != nil {
 			helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-			os.Exit(2)
+			os.Exit(1)
 		}
-		helpers.WriteLog(nameOfLogFile, "Installed service", 2)
+		err = s.Run()
+		if err != nil {
+			helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+			os.Exit(1)
+		}
+
+		helpers.WriteLog(nameOfLogFile, "Installed and Ran service", 2)
 	} else if os.Args[1] == "uninstall" {
 		helpers.WriteLog(nameOfLogFile, "Uninstalling service", 2)
 		err := s.Uninstall()
 		if err != nil {
 			helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-			os.Exit(3)
+			os.Exit(2)
 		}
 		helpers.WriteLog(nameOfLogFile, "Uninstalled service", 2)
-	} else if os.Args[1] == "run" {
-		helpers.WriteLog(nameOfLogFile, "Running service", 2)
-		helpers.WriteLog(nameOfLogFile, s.Run().Error(), 1)
-		helpers.WriteLog(nameOfLogFile, "Stopped running service", 2)
 	}
-
 	os.Exit(0)
 }

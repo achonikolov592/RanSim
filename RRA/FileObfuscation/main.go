@@ -13,16 +13,14 @@ func PrepareEveryTestObfuscated(nameOfLogFile string) {
 	err := filepath.Walk("../", func(path string, info os.FileInfo, err error) error {
 		if path != "../" {
 			_, err := os.Stat(path)
-			if err != nil {
-				return err
-			} else if info.IsDir() && !strings.Contains(path, "main") && !strings.Contains(path, ".git") && !strings.Contains(path, "testfiles") {
+			if info.IsDir() && !strings.Contains(path, "main") && !strings.Contains(path, ".git") && !strings.Contains(path, "testfiles") {
 				fmt.Println("Building: " + path)
-				cmd := exec.Command("garble", "-literals", "build", ".")
+				//cmd := exec.Command("garble", "-literals", "build", ".")
+				cmd := exec.Command("go", "build", ".")
 				cmd.Dir = path
 				err = cmd.Run()
 				if err != nil {
-					helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-					return err
+					helpers.WriteLog(nameOfLogFile, err.Error()+" at file "+path, 1)
 				}
 			}
 		}
@@ -31,6 +29,5 @@ func PrepareEveryTestObfuscated(nameOfLogFile string) {
 
 	if err != nil {
 		helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-		os.Exit(1)
 	}
 }
