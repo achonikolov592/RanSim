@@ -2,8 +2,6 @@ go 1.21.5
 
 use (
 	./ArchiveFiles
-	./DLLInjection/example
-	./DLLInjection/main
 	./DefEnv
 	./Eicar
 	./EncryptDecryptDirRecursive

@@ -3,11 +3,8 @@ package helpers
 import (
 	"fmt"
 	"io"
-	"io/fs"
 	"os"
-	"path/filepath"
 	"strconv"
-	"strings"
 	"time"
 )
 
@@ -67,51 +64,14 @@ func CreateTestFiles(dir string, logfile string) {
 	}
 }
 
-func CreateMultipleTestFiles(dir string, logfile string) {
-	var files []*os.File
-	//find files
-
-	err := filepath.Walk(dir+"../TestFiles", func(path string, info fs.FileInfo, err error) error {
-		if !info.IsDir() {
-			if path != "..\\TestFiles\\DirCreationInfo.log" {
-				f, err := os.OpenFile(path, os.O_RDONLY, 0666)
-				if err != nil {
-					return err
-				}
-				files = append(files, f)
-			}
-		}
-		return nil
-	})
-
+func CreateMultipleTestFiles(dir string, logfile string, files []*os.File, numberOfDirs, numberOfFIles int) {
+	err := os.Mkdir(dir+"/testFilesParent", 0777)
 	if err != nil {
 		WriteLog(logfile, err.Error(), 1)
-	}
-
-	f, err := os.OpenFile("../TestFiles/DirCreationInfo.log", os.O_RDONLY, 0666)
-	if err != nil {
-		WriteLog(logfile, err.Error(), 1)
-	}
-
-	DirCreationInfoString, err := io.ReadAll(f)
-	if err != nil {
-		WriteLog(logfile, err.Error(), 1)
-	}
-	DirCreationInfo := strings.Fields(string(DirCreationInfoString))
-
-	numberOfDirs, _ := strconv.Atoi(DirCreationInfo[0])
-	numberOfFIles, _ := strconv.Atoi(DirCreationInfo[1])
-
-	err = os.RemoveAll("./testFilesParent")
-	if err == nil {
-		err = os.Mkdir("./testFilesParent", 0777)
-		if err != nil {
-			WriteLog(logfile, err.Error(), 1)
-		}
 	}
 
 	for i := 0; i < numberOfDirs; i++ {
-		testFileDir := dir + "testFilesParent/testfiles" + strconv.Itoa(i) + "/"
+		testFileDir := dir + "/testFilesParent/testfiles" + strconv.Itoa(i) + "/"
 		os.Mkdir(testFileDir, 0777)
 		for j := 0; j < len(files); j++ {
 			fileContent, err := io.ReadAll(files[j])
@@ -119,7 +79,7 @@ func CreateMultipleTestFiles(dir string, logfile string) {
 				WriteLog(logfile, err.Error(), 1)
 			}
 			for iof := 0; iof < numberOfFIles; iof++ {
-				f, err := os.Create(testFileDir + strconv.Itoa(iof) + files[j].Name()[13:])
+				f, err := os.Create(testFileDir + strconv.Itoa(iof) + files[j].Name()[16:])
 				if err != nil {
 					WriteLog(logfile, err.Error(), 1)
 				}
@@ -129,7 +89,7 @@ func CreateMultipleTestFiles(dir string, logfile string) {
 				}
 			}
 		}
-		testFileSubDir := testFileDir + "/sub/"
+		testFileSubDir := testFileDir + "sub/"
 		os.Mkdir(testFileSubDir, 0777)
 		for j := 0; j < len(files); j++ {
 			fileContent, err := io.ReadAll(files[j])
@@ -137,7 +97,7 @@ func CreateMultipleTestFiles(dir string, logfile string) {
 				WriteLog(logfile, err.Error(), 1)
 			}
 			for iof := 0; iof < numberOfFIles; iof++ {
-				f, err := os.Create(testFileSubDir + files[j].Name() + strconv.Itoa(iof))
+				f, err := os.Create(testFileSubDir + strconv.Itoa(iof) + files[j].Name()[16:])
 				if err != nil {
 					WriteLog(logfile, err.Error(), 1)
 				}

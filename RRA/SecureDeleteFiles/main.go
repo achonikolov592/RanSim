@@ -45,7 +45,7 @@ func deleteFilesInDir(dir string, nameOfLogFile string, timeToDelay int) {
 
 func main() {
 	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "SecureDeleteFiles")
-	helpers.CreateMultipleTestFiles("./", nameOfLogFile)
+	//helpers.CreateMultipleTestFiles("./", nameOfLogFile)
 
 	helpers.WriteLog(nameOfLogFile, "Starting test: SecureDeleteFiles", 2)
 

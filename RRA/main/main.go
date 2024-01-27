@@ -59,6 +59,8 @@ var testLocation = []location{location{"ArchiveFiles", "../ArchiveFiles/", "Arch
 	location{"ExfiltrationOfFIles", "../UploadFiles/", "Exfilt.exe", "nil"},
 	location{"ProcessHollowing", "../ProHoll/", "ProHoll.exe", "exit status 1"}}
 
+var locationForTestFolder = []string{"../ArchiveFiles", "../EncryptDecryptDirRecursive", "../EncryptDecryptDirRecursivePartially", "../SecureDeleteFiles", "../StartupFolderNewFile", "../UploadFiles"}
+
 func getTestSettings() ([]tests, error) {
 	var testSetts []tests
 	jsonFile, err := os.Open("./tests.json")
@@ -105,61 +107,41 @@ func SettingsAndPrepareTestFiles(nameOfLogFile string) DirSettings {
 	DocFilesFormat := strings.Fields(settings.DocumentFiles)
 	PicFilesFormat := strings.Fields(settings.PictureFiles)
 
-	err = os.RemoveAll("../TestFiles")
-	if err == nil {
-		err = os.Mkdir("../TestFiles", 0777)
-		if err != nil {
-			helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-			os.Exit(3)
-		}
-	}
-
-	nameOfInfoFile := helpers.CreateLogFileIfItDoesNotExist("../TestFiles/", "DirCreationInfo")
-	f, err := os.OpenFile(nameOfInfoFile, os.O_WRONLY, 0666)
-	if err != nil {
-		helpers.WriteLog(nameOfInfoFile, err.Error(), 1)
-	}
-	f.WriteString(strconv.Itoa(settings.DirNumber) + "\n")
-	f.WriteString(strconv.Itoa(settings.DirNumberFiles) + "\n")
-
+	var files []*os.File
 	err = filepath.Walk("../TestFilesAll", func(path string, info fs.FileInfo, err error) error {
 		if !(info.IsDir()) {
 			i := 0
 			for i = 0; i < len(DocFilesFormat); i++ {
 				if path[len(path)-len(DocFilesFormat[i]):] == DocFilesFormat[i] {
-					f, err := os.Create("../TestFiles/" + info.Name())
+					originalFile, err := os.OpenFile(path, os.O_RDONLY, 0666)
 					if err != nil {
 						return err
 					}
-
-					originalFile, err := os.OpenFile("../AllTestFiles/"+path, os.O_RDONLY, 0666)
-					if err != nil {
-						return err
-					}
-					io.Copy(f, originalFile)
-					break
+					files = append(files, originalFile)
 				}
 			}
 			if i == len(DocFilesFormat) {
 				for i = 0; i < len(PicFilesFormat); i++ {
 					if path[len(path)-len(PicFilesFormat[i]):] == PicFilesFormat[i] {
-						f, err := os.Create("../TestFiles/" + info.Name())
+						originalFile, err := os.OpenFile(path, os.O_RDONLY, 0666)
 						if err != nil {
 							return err
 						}
-
-						originalFile, err := os.OpenFile("../AllTestFiles/"+path, os.O_RDONLY, 0666)
-						if err != nil {
-							return err
-						}
-						io.Copy(f, originalFile)
-						break
+						files = append(files, originalFile)
 					}
 				}
 			}
 		}
 		return nil
 	})
+
+	/*for i := 0; i < len(files); i++ {
+		fmt.Println(files[i].Name())
+	}*/
+
+	for i := 0; i < len(locationForTestFolder); i++ {
+		helpers.CreateMultipleTestFiles(locationForTestFolder[i], nameOfLogFile, files, settings.DirNumber, settings.DirNumberFiles)
+	}
 
 	return settings
 }
@@ -211,7 +193,6 @@ func main() {
 	var correctTests, incorrectTests []string
 	for i := 0; i < len(whichTests); i++ {
 		fmt.Println("Starting test: " + whichTests[i].name)
-		fmt.Println(whichTests[i].path + whichTests[i].nameOfFile)
 		if whichTests[i].name == "EncryptDecryptDirRecursive" || whichTests[i].name == "EncryptDecryptDirRecursivePartially" {
 			cmd := exec.Command(whichTests[i].path+whichTests[i].nameOfFile, settings.ToEncrypt, settings.ToDecrypt)
 			cmd.Dir = whichTests[i].path
@@ -320,4 +301,10 @@ func main() {
 	for j := 0; j < len(incorrectTests); j++ {
 		fmt.Printf("\nTest %s is incorrect!", incorrectTests[j])
 	}
+
+	for i := 0; i < len(locationForTestFolder); i++ {
+		err := os.RemoveAll(locationForTestFolder[i] + "/testFilesParent")
+		helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+	}
+
 }

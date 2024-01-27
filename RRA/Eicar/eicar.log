@@ -64,3 +64,5 @@
 [ERROR]: open ./out1.txt: The system cannot find the file specified. AT 25 Jan 24 13:48 GMT
 [INFO]: Starting test: EicarTest AT 25 Jan 24 14:44 GMT
 [ERROR]: open ./out1.txt: The system cannot find the file specified. AT 25 Jan 24 14:44 GMT
+[INFO]: Starting test: EicarTest AT 25 Jan 24 18:17 GMT
+[ERROR]: open ./out1.txt: The system cannot find the file specified. AT 25 Jan 24 18:17 GMT

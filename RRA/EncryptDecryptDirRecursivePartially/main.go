@@ -25,7 +25,7 @@ func main() {
 
 		nameOfInfoFile := helpers.CreateLogFileIfItDoesNotExist("./", "EncryptionInfo")
 		helpers.RemoveTestFilesIfExists("./")
-		helpers.CreateMultipleTestFiles("./", nameOfLogFile)
+		//helpers.CreateMultipleTestFiles("./", nameOfLogFile)
 
 		helpers.WriteLog(nameOfLogFile, "Strating test: EncryptDirPartially", 2)
 

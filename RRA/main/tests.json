@@ -6,7 +6,7 @@
 	{"Name":"GenGetSystemInformation", "IsEnabled": true},
 	{"Name":"GenSecureDeleteFiles", "IsEnabled": false},
 	{"Name":"WinStartupFolderNewFile", "IsEnabled": false},
-	{"Name":"GenDownloadMaliciousPayload", "IsEnabled": false},
+	{"Name":"GenDownloadMaliciousPayload", "IsEnabled": true},
 	{"Name":"WinServiceCreation", "IsEnabled": true},
 	{"Name":"WinPrivilegeEscalation", "IsEnabled": false},
 	{"Name":"GenRansomwareNoteDeploy", "IsEnabled": false},

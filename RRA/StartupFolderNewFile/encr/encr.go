@@ -1,7 +1,13 @@
 package main
 
-import "RRA/EncryptDecryptDirRecursive/encrypt"
+import (
+	"RRA/EncryptDecryptDirRecursive/encrypt"
+	"os"
+	"path/filepath"
+)
 
 func main() {
-	encrypt.EncryptDir("C:/Users/achon/onedrive/desktop/diplomna/rra/StartupFolderNewFile/testfiles", "C:/Users/achon/onedrive/desktop/diplomna/rra/StartupFolderNewFile/startup.log", "C:/Users/achon/onedrive/desktop/diplomna/rra/StartupFolderNewFile/EncryptionInfo.log")
+	ex, _ := os.Executable()
+	exPath, _ := filepath.Abs(ex)
+	encrypt.EncryptDir(exPath+"/../testFilesParent", exPath+"/../startup.log", exPath+"/../StartupFolderNewFile/EncryptionInfo.log")
 }

@@ -62,7 +62,7 @@ func zipDir(dir string, nameOfLogFile string, timeToDelay int) {
 }
 func main() {
 	nameOfLogFile, _ := filepath.Abs(helpers.CreateLogFileIfItDoesNotExist("./", "Archive"))
-	helpers.CreateMultipleTestFiles("./", nameOfLogFile)
+	//helpers.CreateMultipleTestFiles("./", nameOfLogFile)
 
 	helpers.WriteLog(nameOfLogFile, "Starting test: ArchiveFiles", 2)
 	_, err := os.Stat("./archive.zip")

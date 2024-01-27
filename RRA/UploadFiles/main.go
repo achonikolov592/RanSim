@@ -72,7 +72,7 @@ func UploadFiles(nameOfLogFile string, session *mega.Mega, parentNode *mega.Node
 
 func main() {
 	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "UploadFiles")
-	helpers.CreateMultipleTestFiles("./", nameOfLogFile)
+	//helpers.CreateMultipleTestFiles("./", nameOfLogFile)
 
 	session := mega.New()
 	err := session.Login("achonikolov2005@gmail.com", "ArkAda$h1!")
